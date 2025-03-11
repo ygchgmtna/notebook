@@ -1,2 +1,0 @@
-import sys
-input=sys.stdin.readline # 读入会变快
