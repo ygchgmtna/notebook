@@ -36,3 +36,30 @@ for _ in range(n):
     else:
         print("No")
 ```
+- [寻找AKKO](https://www.lanqiao.cn/problems/3907/learning/?page=1&first_category_id=1&tags=%E5%89%8D%E7%BC%80%E5%92%8C&tag_relation=union&sort=difficulty&asc=1)
+
+```bash
+import os
+import sys
+
+n = int(input())  # 读取字符串长度
+s = str(input())  # 读取字符串
+
+# 计数变量
+count_A = 0   # 统计字符 'A' 的数量
+count_K1 = 0  # 统计 "AK" 形式的数量
+count_K2 = 0  # 统计 "AKK" 形式的数量
+count_O = 0   # 统计 "AKKO" 子序列的数量
+
+# 遍历字符串
+for i in s:
+    if i == 'A':
+        count_A += 1  # 统计 'A' 的数量
+    if i == 'K':
+        count_K2 += count_K1  # "AKK" 的数量增加
+        count_K1 += count_A   # "AK" 的数量增加
+    if i == 'O':
+        count_O += count_K2  # "AKKO" 的数量增加
+
+print(count_O)  # 输出 "AKKO" 子序列的数量
+```
