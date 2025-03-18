@@ -112,3 +112,20 @@ result = [prefix[i] * suffix[i] for i in range(n)]
 # 输出
 print(" ".join(map(str, result)))
 ```
+
+- [一维前缀和](https://www.lanqiao.cn/problems/18437/learning/?page=1&first_category_id=1&tags=%E5%89%8D%E7%BC%80%E5%92%8C&tag_relation=intersection&sort=pass_rate&asc=0)
+
+```python
+import os
+import sys
+
+# 请在此输入您的代码
+n,q=map(int,input().split())
+a=list(map(int,input().split()))
+ans=[0]*(n+1)
+for i in range(1,n+1):
+  ans[i]=ans[i-1]+a[i-1]
+for i in range(q):
+  l,r=map(int,input().split())
+  print(ans[r]-ans[l-1])
+```
