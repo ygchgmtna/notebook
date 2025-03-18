@@ -63,3 +63,52 @@ for i in s:
 
 print(count_O)  # 输出 "AKKO" 子序列的数量
 ```
+
+- [二维前缀和](https://www.lanqiao.cn/problems/18439/learning/?page=1&first_category_id=1&tags=%E5%89%8D%E7%BC%80%E5%92%8C&tag_relation=intersection&sort=pass_rate&asc=0)
+```python
+import sys
+
+# 读取输入
+n, m, q = map(int, input().split())
+a = [[0] * (m + 1) for _ in range(n + 1)]
+s = [[0] * (m + 1) for _ in range(n + 1)]
+
+# 构建前缀和
+for i in range(1, n + 1):
+    row = list(map(int, input().split()))
+    for j in range(1, m + 1):
+        a[i][j] = row[j - 1]
+        s[i][j] = s[i - 1][j] + s[i][j - 1] - s[i - 1][j - 1] + a[i][j]
+
+# 处理查询
+for _ in range(q):
+    x1, y1, x2, y2 = map(int, input().split())
+    result = s[x2][y2] - s[x1 - 1][y2] - s[x2][y1 - 1] + s[x1 - 1][y1 - 1]
+    print(result)
+```
+
+- [其他元素的乘积](https://www.lanqiao.cn/problems/317/learning/?page=1&first_category_id=1&tags=%E5%89%8D%E7%BC%80%E5%92%8C&tag_relation=intersection&sort=pass_rate&asc=0)
+
+```bash
+import sys
+
+# 读取输入
+n = int(input())  # 数组大小
+a = list(map(int, input().split()))  # 读取数组元素
+
+# 计算前缀积
+prefix = [1] * n
+for i in range(1, n):
+    prefix[i] = prefix[i - 1] * a[i - 1]
+
+# 计算后缀积
+suffix = [1] * n
+for i in range(n - 2, -1, -1):
+    suffix[i] = suffix[i + 1] * a[i + 1]
+
+# 计算最终结果
+result = [prefix[i] * suffix[i] for i in range(n)]
+
+# 输出
+print(" ".join(map(str, result)))
+```
