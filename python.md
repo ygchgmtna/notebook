@@ -129,3 +129,63 @@ for i in range(q):
   l,r=map(int,input().split())
   print(ans[r]-ans[l-1])
 ```
+
+- [区间次方和](https://www.lanqiao.cn/problems/3382/learning/?page=1&first_category_id=1&tags=%E5%89%8D%E7%BC%80%E5%92%8C&tag_relation=intersection&sort=pass_rate&asc=0)
+
+```python
+import os
+import sys
+
+# 请在此输入您的代码
+
+n,m=map(int,input().split())
+a=list(map(int,input().split()))
+ans1=[0]*(n+1)
+ans2=[0]*(n+1)
+ans3=[0]*(n+1)
+ans4=[0]*(n+1)
+ans5=[0]*(n+1)
+for i in range(1,n+1):
+  ans1[i]=ans1[i-1]+a[i-1]**1
+  ans2[i]=ans2[i-1]+a[i-1]**2
+  ans3[i]=ans3[i-1]+a[i-1]**3
+  ans4[i]=ans4[i-1]+a[i-1]**4
+  ans5[i]=ans5[i-1]+a[i-1]**5
+for i in range(m):
+  l,r,k=map(int,input().split())
+  if k==1:
+    print((ans1[r]-ans1[l-1])%(10**9+7))
+  elif k==2:
+    print((ans2[r]-ans2[l-1])%(10**9+7))
+  elif k==3:
+    print((ans3[r]-ans3[l-1])%(10**9+7))
+  elif k==4:
+    print((ans4[r]-ans4[l-1])%(10**9+7))
+  elif k==5:
+    print((ans5[r]-ans5[l-1])%(10**9+7))
+```
+优化后
+```python
+import sys
+
+# 读取 n 和 m
+n, m = map(int, input().split())
+
+# 读取数组 a
+a = list(map(int, input().split()))
+
+# 预处理前缀和，ans[k][i] 记录 a[i]^k 的前缀和
+K = 5  # 最大 k 的值
+ans = [[0] * (n + 1) for _ in range(K + 1)]
+
+# 计算 1~5 次方的前缀和
+for i in range(1, n + 1):
+    for k in range(1, K + 1):
+        ans[k][i] = ans[k][i - 1] + a[i - 1] ** k  # 注意 a[i-1] 因为 a 是 0-based 索引
+
+# 处理查询
+mod = 10**9+7
+for _ in range(m):
+    l, r, k = map(int, input().split())
+    print((ans[k][r] - ans[k][l - 1]) % mod )  # 计算区间 k 次方和并取模
+```
