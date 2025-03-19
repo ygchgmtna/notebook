@@ -189,3 +189,12 @@ for _ in range(m):
     l, r, k = map(int, input().split())
     print((ans[k][r] - ans[k][l - 1]) % mod )  # 计算区间 k 次方和并取模
 ```
+
+- **bisect函数**
+
+```python
+bisect.bisect_left(lst, x)	返回 x 在 lst 中的插入位置（如果有相同元素，插在左侧）。
+bisect.bisect_right(lst, x)	返回 x 在 lst 中的插入位置（如果有相同元素，插在右侧）。
+bisect.insort_left(lst, x)	在 lst 中插入 x，保持有序（插入左侧）。
+bisect.insort_right(lst, x)	在 lst 中插入 x，保持有序（插入右侧）。
+```
