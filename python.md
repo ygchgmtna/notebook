@@ -198,3 +198,54 @@ bisect.bisect_right(lst, x)	返回 x 在 lst 中的插入位置（如果有相�
 bisect.insort_left(lst, x)	在 lst 中插入 x，保持有序（插入左侧）。
 bisect.insort_right(lst, x)	在 lst 中插入 x，保持有序（插入右侧）。
 ```
+
+- [M次方根](https://www.lanqiao.cn/problems/1542/learning/?page=1&first_category_id=1&tags=%E4%BA%8C%E5%88%86&tag_relation=intersection&sort=pass_rate&asc=0)
+```python
+import os
+import sys
+n, m = map(int, input().split())
+
+# 设定左右边界
+l, r = 1.0, n  
+eps = 1e-8  # 增加精度，确保计算到 7 位小数
+
+while r - l > eps:
+    mid = (l + r) / 2
+    power = mid**m
+
+    if abs(power - n) < eps:  # 直接判断误差
+        l = mid
+        break
+    elif power < n:
+        l = mid
+    else:
+        r = mid
+
+# 输出保留 7 位小数
+print(f"{l:.7f}")
+```
+- [工厂质检员](https://www.lanqiao.cn/problems/8208/learning/?page=1&first_category_id=1&tags=%E4%BA%8C%E5%88%86&tag_relation=intersection&sort=pass_rate&asc=0)
+```python
+import sys
+
+# 读取输入
+n, k = map(int, input().split())
+d_list = list(map(int, input().split()))
+
+# 二分查找
+l, r = 1, sum(d_list)  # r 取最大可能的高度
+while l <= r:
+    mid = (l + r) // 2  # 取整数中间值
+    count = sum(d // mid for d in d_list)  # 计算能分出的块数
+    
+    if count >= k:
+        l = mid + 1  # 可以分更多块，尝试增加高度
+    else:
+        r = mid - 1  # 块数不够，降低高度
+
+# 如果 r < 1，说明无法分成 K 份
+if r < 1:
+    print(-1)
+else:
+    print(r)
+```
