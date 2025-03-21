@@ -249,3 +249,38 @@ if r < 1:
 else:
     print(r)
 ```
+
+- [区间覆盖增强版](https://www.luogu.com.cn/problem/P2082)
+
+```python
+n = int(input())
+a = []
+
+# 读取区间
+for _ in range(n):
+    l, r = map(int, input().split())
+    a.append((l, r))
+
+# 按起点排序
+a.sort(key=lambda x: x[0])
+
+merged = []
+start, end = a[0]
+
+for i in range(1, n):
+    curr_start, curr_end = a[i]
+
+    if curr_start <= end:  # 区间有重叠
+        end = max(end, curr_end)
+    else:
+        # 不重叠，保存前一个合并区间
+        merged.append((start, end))
+        start, end = curr_start, curr_end
+
+# 别忘了把最后一个区间加入
+merged.append((start, end))
+
+# 计算总长度
+total = sum(r - l for l, r in merged)
+print(total)
+```
