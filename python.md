@@ -284,3 +284,23 @@ merged.append((start, end))
 total = sum(r - l for l, r in merged)
 print(total)
 ```
+- **zip**
+```python
+list = sorted(map(int, input().split()))
+least = min(b - a for a, b in zip(list, list[1:]))
+```
+**zip(list, list[1:])：**
+把原列表和它的后移一位副本打包成一对对的形式。
+例如 list = [2, 3, 5, 8]，那么：
+```
+zip(list, list[1:])  →  [(2, 3), (3, 5), (5, 8)]
+b - a for a, b in zip(...)：
+```
+对每一对相邻的数 a 和 b，计算它们的差值 b - a。
+
+min(...)：
+
+取所有差值中的最小值。
+
+对应上面的例子：
+差值 = [1, 2, 3] → 最小的是 1，所以 least = 1
