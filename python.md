@@ -350,3 +350,12 @@ print(ans)
 print(ord('a') - ord('a'))  # 输出 0
 print(ord('c') - ord('a'))  # 输出 2
 ```
+- **round**函数(四舍五入)
+```python
+print(f'{round((youxiu/n)*100)}%')
+```
+- **字符串相加**
+```python
+print(chr(ord('a')+a[0][0]))
+```
+ 
