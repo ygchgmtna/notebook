@@ -345,3 +345,8 @@ for i in range(n):
   ans+=a[i]*total
 print(ans)
 ```
+- **ord函数**
+```python
+print(ord('a') - ord('a'))  # 输出 0
+print(ord('c') - ord('a'))  # 输出 2
+```
