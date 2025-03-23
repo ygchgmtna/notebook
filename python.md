@@ -304,3 +304,29 @@ min(...)：
 
 对应上面的例子：
 差值 = [1, 2, 3] → 最小的是 1，所以 least = 1
+
+- [删除字符](https://www.lanqiao.cn/problems/544/learning/?page=1&first_category_id=1&tags=%E4%BA%8C%E5%88%86,%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C,%E5%89%8D%E7%BC%80%E5%92%8C,%E8%B4%AA%E5%BF%83,%E5%B7%AE%E5%88%86&tag_relation=union&sort=students_count&asc=0)
+```python
+import os
+import sys
+
+# 请在此输入您的代码
+s = input()
+k = int(input())
+
+stack = []
+
+for c in s:
+    while stack and k > 0 and stack[-1] > c:
+        stack.pop()
+        k -= 1
+    stack.append(c)
+
+# 如果还有没删完的，说明后面都字典序升序，可以直接去掉末尾的
+while k > 0:
+    stack.pop()
+    k -= 1
+
+print(''.join(stack))
+```
+
