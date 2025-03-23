@@ -329,4 +329,19 @@ while k > 0:
 
 print(''.join(stack))
 ```
+- [求和](https://www.lanqiao.cn/problems/2080/learning/?page=1&first_category_id=1&tags=%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C,%E5%89%8D%E7%BC%80%E5%92%8C&tag_relation=union&sort=students_count&asc=0)
+```python
+import os
+import sys
 
+# 请在此输入您的代码
+n=int(input())
+a=list(map(int,input().split()))
+count=0
+total=sum(a)
+ans=0
+for i in range(n):
+  total-=a[i]
+  ans+=a[i]*total
+print(ans)
+```
