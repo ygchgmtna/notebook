@@ -197,6 +197,13 @@ bisect.bisect_left(lst, x)	返回 x 在 lst 中的插入位置（如果有相同
 bisect.bisect_right(lst, x)	返回 x 在 lst 中的插入位置（如果有相同元素，插在右侧）。
 bisect.insort_left(lst, x)	在 lst 中插入 x，保持有序（插入左侧）。
 bisect.insort_right(lst, x)	在 lst 中插入 x，保持有序（插入右侧）。
+
+bisect.bisect_left(arr, x, lo=0, hi=len(arr))
+
+arr（序列）：这是你希望在其中查找插入位置的排序序列（例如一个升序排列的列表）。这个参数是必需的，表示我们要查找的目标列表。
+x（目标值）：这是你想要插入的值，或者你希望查找它插入位置的值。bisect_left 会返回这个值在列表中的位置，确保插入后的列表仍然是有序的。例如，查找数字 x 应该插入到列表中的哪个位置，以保持列表的升序。
+lo（可选，默认值为 0）：这是查找区间的起始位置。它是你希望开始查找的位置。如果不提供，默认从索引 0 开始查找。如果你只关心列表的一部分，可以通过指定 lo 来限制查找的范围。
+hi（可选，默认值为 len(arr)）：这是查找区间的结束位置。它是你希望停止查找的位置，默认是列表的末尾。如果不提供，默认会查找整个列表。
 ```
 
 - [M次方根](https://www.lanqiao.cn/problems/1542/learning/?page=1&first_category_id=1&tags=%E4%BA%8C%E5%88%86&tag_relation=intersection&sort=pass_rate&asc=0)
