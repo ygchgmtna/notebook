@@ -365,4 +365,78 @@ print(f'{round((youxiu/n)*100)}%')
 ```python
 print(chr(ord('a')+a[0][0]))
 ```
- 
+
+- **树状数组**
+
+[树状数组1](https://www.luogu.com.cn/problem/P3374)
+```python
+n,m=map(int,input().split())
+a=list(map(int,input().split()))
+
+def lowbit(x):
+    return x&-x
+
+def query(x):
+    ans=0
+    while x>0:
+        ans+=tr[x]
+        x-=lowbit(x)
+    return ans
+
+def add(x,k):
+    while x<=n:
+        tr[x]+=k
+        x+=lowbit(x)
+
+tr=[0]*(n+1)
+
+for i in range(1,n+1):
+    add(i,a[i-1])
+
+for _ in range(m):
+    op=list(map(int,input().split()))
+    if op[0]==1:
+        add(op[1],op[2])
+    if op[0]==2:
+        print(query(op[2])-query(op[1]-1))
+```
+[树状数组2](https://www.luogu.com.cn/problem/P3368)
+```python
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+
+def lowbit(x):
+    return x & -x
+
+def query(x):
+    res = 0
+    while x > 0:
+        res += tr[x]
+        x -= lowbit(x)
+    return res
+
+def add(x, k):
+    while x <= n:
+        tr[x] += k
+        x += lowbit(x)
+
+tr = [0] * (n + 1)
+
+# 正确初始化差分数组
+for i in range(1, n + 1):
+    delta = a[i - 1] - (a[i - 2] if i > 1 else 0)
+    add(i, delta)
+
+# 处理操作
+for _ in range(m):
+    op = list(map(int, input().split()))
+    if op[0] == 1:
+        x, y, k = op[1], op[2], op[3]
+        add(x, k)
+        if y + 1 <= n:
+            add(y + 1, -k)
+    else:
+        x = op[1]
+        print(query(x))
+```
+
