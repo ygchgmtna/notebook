@@ -447,3 +447,63 @@ grid = [list(input().strip()) for _ in range(n)]
 grid=[list(map(int,input().split())) for _ in range(n)]
 ```
 
+- [小红的大蘑菇hard](https://ac.nowcoder.com/acm/contest/106504/C)
+
+```python
+from collections import deque
+
+# 输入地图大小
+n, m = map(int, input().split())
+a = [[0] * (m + 4) for _ in range(n + 4)]  # 边界扩展
+b = []
+
+# 读取地图数据
+for i in range(2, n + 2):
+    row = input()
+    for j in range(len(row)):
+        if row[j] == '.':
+            a[i][j + 2] = 0
+            b.append((i, j + 2))
+        elif row[j] == '*':
+            a[i][j + 2] = 1
+        else:
+            a[i][j + 2] = 2
+
+# 预处理可以通行的点
+e = set()  # 用set加速查找
+for c in b:
+    if (a[c[0] - 1][c[1]] + a[c[0] + 1][c[1]] + a[c[0]][c[1] + 1] + a[c[0]][c[1] - 1]) == 0:
+        # 检查周围是否有不安全的区域
+        if a[c[0] - 2][c[1]] != 2 and a[c[0] - 1][c[1] - 1] != 2 and a[c[0] - 1][c[1] + 1] != 2 and \
+           a[c[0]][c[1] - 2] != 2 and a[c[0] + 1][c[1] - 1] != 2 and a[c[0] + 2][c[1]] != 2 and \
+           a[c[0] + 1][c[1] + 1] != 2 and a[c[0]][c[1] + 2] != 2:
+            e.add((c[0], c[1]))  # 使用 set 保存有效点
+
+# 更新地图状态
+for i in range(2, n + 2):
+    for j in range(2, m + 2):
+        if (i, j) in e:
+            a[i][j] = 1
+        else:
+            a[i][j] = 0
+
+# BFS
+f = True
+q = deque([[2, 2, 0]])  # 用 deque 代替列表
+dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+
+while q:
+    x, y, dis = q.popleft()  # deque 中的 pop操作是 O(1)
+    if x == n + 1 and y == m + 1:
+        f = False
+        print(dis)
+        break
+    for xx, yy in dirs:
+        tx = xx + x
+        ty = yy + y
+        if 2 <= tx < n + 2 and 2 <= ty < m + 2 and a[tx][ty] == 1:
+            q.append([tx, ty, dis + 1])
+
+if f:
+    print(-1)
+```
