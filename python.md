@@ -444,5 +444,6 @@ for _ in range(m):
 
 ```python
 grid = [list(input().strip()) for _ in range(n)]
+grid=[list(map(int,input().split())) for _ in range(n)]
 ```
 
