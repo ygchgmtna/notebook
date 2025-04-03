@@ -440,3 +440,9 @@ for _ in range(m):
         print(query(x))
 ```
 
+- 输入
+
+```python
+grid = [list(input().strip()) for _ in range(n)]
+```
+
