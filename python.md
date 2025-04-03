@@ -587,4 +587,17 @@ strings = ["Hello", " ", "world", "!"]
 result = reduce(lambda x, y: x + y, strings)
 print(result)  # 输出: Hello world!
 ```
-
+- [确定字符串是否是另一个的排列](https://www.lanqiao.cn/problems/203/learning/?page=1&first_category_id=1&second_category_id=6)
+睿智的方法就是直接排序后比较
+```python
+str1=input()
+str2=input()
+f=False
+if len(str1)!=len(str2):
+  print('NO')
+else:
+  if sorted(str1)==sorted(str2):
+    print('YES')
+  else:
+    print('NO')
+```
