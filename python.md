@@ -554,3 +554,37 @@ for _ in range(m):
         else:
             print("NO")
 ```
+
+- [Reduce函数]()
+
+```python
+from functools import reduce
+reduce(function, iterable[, initializer])
+
+numbers = [1, 2, 3, 4]
+result = reduce(lambda x, y: x + y, numbers)
+print(result)  # 输出: 10
+
+numbers = [1, 2, 3, 4]
+result = reduce(lambda x, y: x + y, numbers, 10)  # 初始值为 10
+print(result)  # 输出: 20
+
+numbers = [1, 2, 3, 4]
+result = reduce(lambda x, y: x * y, numbers)
+print(result)  # 输出: 24
+
+numbers = [1, 2, 3, 4, 5]
+# 先使用 filter 过滤出大于 2 的数，再用 reduce 求最大值
+filtered = filter(lambda x: x > 2, numbers)
+max_value = reduce(lambda x, y: x if x > y else y, filtered)
+print(max_value)  # 输出: 5
+
+numbers = [1, 2, 3, 4]
+result = reduce(lambda x, y: x + (y * y), numbers)
+print(result)  # 输出: 30 (1 + 4 + 9 + 16)
+
+strings = ["Hello", " ", "world", "!"]
+result = reduce(lambda x, y: x + y, strings)
+print(result)  # 输出: Hello world!
+```
+
