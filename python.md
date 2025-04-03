@@ -507,3 +507,50 @@ while q:
 if f:
     print(-1)
 ```
+
+- [并查集](https://www.lanqiao.cn/problems/1135/learning/?problem_list_id=30&page=1)
+```python
+import os
+import sys
+
+# 请在此输入您的代码
+# 并查集类
+class UnionFind:
+    def __init__(self, n):
+        self.parent = list(range(n))  # 每个学生的父节点初始化为自己
+        self.rank = [1] * n  # 记录每个节点的秩，帮助优化合并操作
+
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])  # 路径压缩
+        return self.parent[x]
+
+    def union(self, x, y):
+        rootX = self.find(x)
+        rootY = self.find(y)
+
+        if rootX != rootY:  # 如果不在同一个集合中
+            # 按秩合并，较小的树连接到较大的树
+            if self.rank[rootX] > self.rank[rootY]:
+                self.parent[rootY] = rootX
+            elif self.rank[rootX] < self.rank[rootY]:
+                self.parent[rootX] = rootY
+            else:
+                self.parent[rootY] = rootX
+                self.rank[rootX] += 1
+
+# 主程序
+n, m = map(int, input().split())  # n为学生数量，m为操作数量
+uf = UnionFind(n)  # 初始化并查集
+
+# 处理操作
+for _ in range(m):
+    op, x, y = map(int, input().split())
+    if op == 1:  # 合并操作
+        uf.union(x-1, y-1)  # 注意转换为从0开始的索引
+    elif op == 2:  # 查询操作
+        if uf.find(x-1) == uf.find(y-1):
+            print("YES")
+        else:
+            print("NO")
+```
