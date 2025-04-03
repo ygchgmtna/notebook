@@ -601,3 +601,35 @@ else:
   else:
     print('NO')
 ```
+
+- [压缩字符串](https://www.lanqiao.cn/problems/204/learning/?page=1&first_category_id=1&second_category_id=6)
+
+```python
+s = input()
+
+# 初始化变量
+compressed = ""
+count = 1  # 初始化字符计数
+n = len(s)
+
+# 遍历字符串，进行压缩
+for i in range(1, n):
+    if s[i] == s[i - 1]:
+        count += 1
+    else:
+        compressed += s[i - 1]  # 添加字符
+        if count > 1:  # 如果计数大于 1，添加数字
+            compressed += str(count)
+        count = 1  # 重置计数器
+
+# 最后一组字符的处理
+compressed += s[-1]  # 添加最后一个字符
+if count > 1:
+    compressed += str(count)
+
+# 判断是否压缩后更短
+if len(compressed) < n:
+    print(compressed)
+else:
+    print("NO")
+```
