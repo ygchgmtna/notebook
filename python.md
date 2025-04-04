@@ -633,3 +633,20 @@ if len(compressed) < n:
 else:
     print("NO")
 ```
+- 倒转字符串
+
+直接print(s[::-1])
+
+- [找到给定字符串中的不同字符](https://www.lanqiao.cn/problems/251/learning/?page=1&first_category_id=1&second_category_id=6)
+```python
+s1=input()
+s2=input()
+
+m=n=0
+
+for i in s1:
+  m+=ord(i)
+for j in s2:
+  n+=ord(j)
+print(chr(abs(m-n)))
+```
