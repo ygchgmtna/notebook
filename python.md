@@ -650,3 +650,13 @@ for j in s2:
   n+=ord(j)
 print(chr(abs(m-n)))
 ```
+求和的一种方式
+```python
+n,s=map(int,input().split())
+a=[]
+for i in range(n):
+    p,c=map(int,input().split())
+    a.append((p,c))
+a.sort(key=lambda x: x[1])
+s1=sum(p for p,c in a)
+```
