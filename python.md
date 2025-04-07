@@ -660,3 +660,19 @@ for i in range(n):
 a.sort(key=lambda x: x[1])
 s1=sum(p for p,c in a)
 ```
+- 【最快求和】
+
+```python
+year = start_day.strftime("%Y")
+month = start_day.strftime("%m")
+day = start_day.strftime("%d")
+
+# 计算数位数字之和
+year_sum = sum(int(digit) for digit in year)  # 计算年份数字之和
+month_sum = sum(int(digit) for digit in month)  # 计算月份数字之和
+day_sum = sum(int(digit) for digit in day)  # 计算日期数字之和
+```
+```python
+def digit_sum1(n):
+    return sum(int(digit) for digit in str(n))
+```
