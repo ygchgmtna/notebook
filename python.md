@@ -676,3 +676,19 @@ day_sum = sum(int(digit) for digit in day)  # 计算日期数字之和
 def digit_sum1(n):
     return sum(int(digit) for digit in str(n))
 ```
+
+- [质因数个数](https://www.lanqiao.cn/problems/2155/learning/)
+
+```python
+import sys
+input=sys.stdin.readline
+x=int(input())
+factor=0
+for i in range(2,x+1):
+    if x%i==0:
+        factor+=1
+    while x%i==0:
+        x//=i
+    if x==1 or factor==0 and i>=int(x**0.5):break
+print(max(1,factor))
+```
