@@ -695,3 +695,39 @@ for i in range(2,x+1):
     if x==1 or factor==0 and i>=int(x**0.5):break
 print(max(1,factor))
 ```
+
+- [扫把扶不扶](https://www.lanqiao.cn/problems/19850/learning/?page=1&first_category_id=1&tag_relation=union&sort=problem_id&asc=0&tags=%E6%A8%A1%E6%8B%9F)
+```python
+from datetime import *
+from time import *
+n=int(input())
+for i in range(n):
+    s1,s2=map(str,input().split())
+    s3,s4=map(str,input().split())
+    t,x=map(int,input().split())
+
+    st1=datetime.strptime(s1,"%H:%M:%S")
+    st2=datetime.strptime(s2,"%H:%M:%S")
+    st3=datetime.strptime(s3,"%H:%M:%S")
+    st4=datetime.strptime(s4,"%H:%M:%S")
+    tdelta=timedelta(minutes=t)
+    xdelta=timedelta(minutes=x)
+
+    if st2<st1:
+        if st3<=st4:
+            print('Lan')
+        else:
+            print('Draw')
+    else:
+        if st3>st4:
+            print('You')
+        else:
+            if st2+tdelta>st4:
+                print('You')
+            else:
+                # fu
+                if st1+xdelta<=st2: # 来得及
+                    print('You')
+                else: # 来不及
+                    print('Lan')
+```
