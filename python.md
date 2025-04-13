@@ -731,3 +731,36 @@ for i in range(n):
                 else: # 来不及
                     print('Lan')
 ```
+
+- [全栈项目小组](https://www.lanqiao.cn/problems/19856/learning/?page=1&first_category_id=1&tag_relation=union&sort=problem_id&asc=0&tags=%E6%A8%A1%E6%8B%9F)
+```python
+n=int(input())
+f=[]
+b=[]
+for i in range(n):
+    s,p=input().split()
+    s=int(s)
+    if p=='F':
+        f.append(s)
+    else:
+        b.append(s)
+
+f_count={}
+b_count={}
+
+for num in f:
+    if num in f_count:
+        f_count[num]+=1
+    else:
+        f_count[num]=1
+for num in b:
+    if num in b_count:
+        b_count[num]+=1
+    else:
+        b_count[num]=1
+ans=0
+for temp in f_count:
+    if temp in b_count:
+        ans+=min(f_count[temp],b_count[temp])
+print(ans)
+```
