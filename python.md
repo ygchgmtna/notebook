@@ -232,6 +232,9 @@ while r - l > eps:
 print(f"{l:.7f}")
 ```
 - [工厂质检员](https://www.lanqiao.cn/problems/8208/learning/?page=1&first_category_id=1&tags=%E4%BA%8C%E5%88%86&tag_relation=intersection&sort=pass_rate&asc=0)
+
+至于为什么是l=mid+1而不是r=mid-1，因为这题是要我们去寻找最大值，所以应尽量去找较大的值，而不是较小的值
+
 ```python
 import sys
 
