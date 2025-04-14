@@ -764,3 +764,25 @@ for temp in f_count:
         ans+=min(f_count[temp],b_count[temp])
 print(ans)
 ```
+
+- [书籍标签](https://www.lanqiao.cn/problems/19740/learning/?page=2&first_category_id=1&tags=%E6%A8%A1%E6%8B%9F&tag_relation=union&sort=problem_id&asc=0)
+
+精度设置
+
+```python
+from decimal import Decimal
+n=int(input())
+a=[]
+min_=Decimal('inf')
+for i in range(n):
+    t,p=map(int,input().split())
+    a.append((i+1,t,p))
+    p=Decimal(p)
+    t=Decimal(t)
+    if min_>(p/t).quantize(Decimal('0.0000001')):
+        min_=(p/t).quantize(Decimal('0.0000001'))
+        ans=i+1
+    print((p/t).quantize(Decimal('0.0000001')))
+    print(min_,i+1)
+print(ans)
+```
