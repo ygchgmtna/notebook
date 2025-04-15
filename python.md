@@ -798,7 +798,7 @@ for i in range(n):
 print(n-cnt)
 ```
 
--[二维扫雷](https://www.lanqiao.cn/problems/19691/learning/?page=2&first_category_id=1&tags=%E6%A8%A1%E6%8B%9F&tag_relation=union&sort=problem_id&asc=0)
+- [二维扫雷](https://www.lanqiao.cn/problems/19691/learning/?page=2&first_category_id=1&tags=%E6%A8%A1%E6%8B%9F&tag_relation=union&sort=problem_id&asc=0)
 ```python
 n,m=map(int,input().split())
 grid=[list(map(int,input().split())) for _ in range(n)]
@@ -816,3 +816,6 @@ for i in range(dx,n,3):
         ans+=grid[i][j]
 print(ans)
 ```
+
+![24d1befc6f69d068614d7b7052f0611b](https://github.com/user-attachments/assets/d0a28a2d-738f-427e-af14-88c678ab8313)
+
