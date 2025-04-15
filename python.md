@@ -819,3 +819,38 @@ print(ans)
 
 ![24d1befc6f69d068614d7b7052f0611b](https://github.com/user-attachments/assets/d0a28a2d-738f-427e-af14-88c678ab8313)
 
+- [五子棋对弈](https://www.lanqiao.cn/problems/19694/learning/?page=2&first_category_id=1&tags=%E6%A8%A1%E6%8B%9F&tag_relation=union&sort=problem_id&asc=0)
+```python
+mp=[[0]*5 for _ in range(5)]
+ans=0
+
+def check():
+    global ans
+    for i in range(5):
+        if sum(mp[i])%5==0:
+            return
+    for j in range(5):
+        if sum(mp[i][j] for i in range(5))%5==0:
+            return
+    if sum(mp[i][i] for i in range(5))%5==0:
+        return
+    if sum(mp[i][4-i] for i in range(5))%5==0:
+        return
+    ans+=1
+
+def dfs(num,ones):
+    if ones>13:
+        return
+    if num==25:
+        if ones==13:
+            check()
+        return
+    x=num//5
+    y=num%5
+    mp[x][y]=1
+    dfs(num+1,ones+1)
+    mp[x][y]=0
+    dfs(num+1,ones)
+dfs(0,0)
+print(ans)
+```
