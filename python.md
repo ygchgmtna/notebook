@@ -798,3 +798,21 @@ for i in range(n):
 print(n-cnt)
 ```
 
+-[二维扫雷](https://www.lanqiao.cn/problems/19691/learning/?page=2&first_category_id=1&tags=%E6%A8%A1%E6%8B%9F&tag_relation=union&sort=problem_id&asc=0)
+```python
+n,m=map(int,input().split())
+grid=[list(map(int,input().split())) for _ in range(n)]
+ans=0
+if n%3:
+    dx=0
+else:
+    dx=1
+if m%3:
+    dy=0
+else:
+    dy=1
+for i in range(dx,n,3):
+    for j in range(dy,m,3):
+        ans+=grid[i][j]
+print(ans)
+```
