@@ -786,3 +786,15 @@ for i in range(n):
     print(min_,i+1)
 print(ans)
 ```
+
+- [混乱的草稿纸](https://www.lanqiao.cn/problems/20104/learning/?page=1&first_category_id=1&tags=%E6%A8%A1%E6%8B%9F&tag_relation=union&sort=problem_id&asc=0)
+```python
+cnt=0
+n=int(input())
+a=list(map(int,input().split()))
+for i in range(n):
+  if a[n-1-i]==n-cnt:
+    cnt+=1
+print(n-cnt)
+```
+
