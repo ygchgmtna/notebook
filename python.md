@@ -854,3 +854,18 @@ def dfs(num,ones):
 dfs(0,0)
 print(ans)
 ```
+
+- [小球反弹](https://www.lanqiao.cn/problems/19732/learning/?page=2&first_category_id=1&sort=students_count&asc=0)
+```python
+import math
+a,b=343720,233333
+while True:
+    if a/b>15/17:
+        b+=233333
+    elif a/b<15/17:
+        a+=343720
+    else:
+        ans=2*((a**2+b**2)**0.5)
+        break
+print(ans)
+```
