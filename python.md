@@ -894,3 +894,11 @@ for i in range(365):
   start+=delta
 print(cnt)
 ```
+
+- **or的用法**
+```python
+if ('012' or '123' or '234') in s
+if ('012' in s) or ('123' in s) or ('234' in s):
+```
+两者不一样，不一样的原因在于or的判断只要第一个为True，就直接返回该值。
+因此，表达式 ('012' or '123' or '234') 实际上被解析为 '012'，所以 if ('012' or '123' or '234') in s: 等价于 if '012' in s:。
