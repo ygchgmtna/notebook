@@ -920,3 +920,17 @@ for i in range(k):
     ans+=l[i]*(l[i]-1)//2 #相同余数的前缀和随便取两个相减即为k的倍数
 print(ans)
 ```
+
+- [冶炼金属](https://www.lanqiao.cn/problems/3510/learning/?page=2&first_category_id=1&sort=students_count&asc=0)
+```python
+n=int(input())
+import math
+min_=10**9+1
+max_=0
+for i in range(n):
+    a,b=map(int,input().split())
+    min_=min(a//b,min_)
+    max_=max(a//(b+1),max_) # 一开始我是max_=max(math.ceil(a/(b+1)),max_),然后输出max_，但是并不对，原因在于如果刚好算出来一个整数，取这个整数的话会得到（b+1）而不是(b)了
+print(max_+1,end=' ')
+print(min_)
+```
