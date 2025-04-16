@@ -902,3 +902,21 @@ if ('012' in s) or ('123' in s) or ('234' in s):
 ```
 两者不一样，不一样的原因在于or的判断只要第一个为True，就直接返回该值。
 因此，表达式 ('012' or '123' or '234') 实际上被解析为 '012'，所以 if ('012' or '123' or '234') in s: 等价于 if '012' in s:。
+
+- [k倍区间](https://www.lanqiao.cn/problems/97/learning/?page=2&first_category_id=1&sort=students_count&asc=0)
+```python
+n,k=map(int,input().split())
+a=[]
+ans=0
+su=[0]*(n+1)
+l=[0]*k
+for i in range(n):
+    a.append(int(input()))
+    su[i+1]=su[i]+a[i]
+    l[su[i+1]%k]+=1
+    
+ans=l[0] # 那些不用组合直接为0的前缀和
+for i in range(k):
+    ans+=l[i]*(l[i]-1)//2 #相同余数的前缀和随便取两个相减即为k的倍数
+print(ans)
+```
