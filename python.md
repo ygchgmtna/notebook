@@ -962,3 +962,10 @@ import sys
 # 是我想的复杂了，他后台会自动调用输入方法跟我的输出进行比对，我让他的输入直接作为我的答案输出，必对！！！
 print(input())
 ```
+
+- **(timedelta).days**
+days属性是属于timedelta对象的，而不是属于datetime对象的，
+delta=timedelta(days=1)
+start=datetime(2025,4,20)
+end=datetime(2025,4,20)
+那么(end-start)仍是一个timedelta对象，而(end-delta)则是一个datetime对象，所以print((end-start).days)没问题，而print((end-delta).days)就有问题了，发出报错。
