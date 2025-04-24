@@ -1028,3 +1028,27 @@ while True:
         break
 ```
 
+- [小蓝的神奇复印机](https://www.lanqiao.cn/problems/3749/learning/?page=1&first_category_id=1&problem_id=3749)
+```python
+from queue import PriorityQueue
+from collections import deque
+n,X=list(map(int,input().split()))
+a=deque()
+b=PriorityQueue()
+tx=map(int,input().split())
+for i,x in enumerate(tx):
+    a.append((i,x))
+    b.put(-x)
+ans=0
+while True:
+    i,x=a.popleft()
+    out=b.get()
+    if -x==out:
+        ans+=1
+        if i==X:
+            print(ans)
+            break
+    else:
+        a.append((i,x))
+        b.put(out)
+```
