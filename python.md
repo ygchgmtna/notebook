@@ -1007,3 +1007,24 @@ end=datetime(2025,4,20)
   # [3, 5, 8]
   ```
 
+- 优先队列取最大值
+```python
+n,x=map(int,input().split())
+from collections import *
+from queue import *
+de=PriorityQueue()
+a=list(map(int,input().split()))
+for i in a:
+    de.put(-i)
+cnt=0
+
+while True:
+    tmp=-de.get()
+    cnt+=1
+    print(tmp)
+    if tmp==a[x]:
+        
+        print(cnt)
+        break
+```
+
