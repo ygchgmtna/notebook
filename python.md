@@ -1052,3 +1052,31 @@ while True:
         a.append((i,x))
         b.put(out)
 ```
+
+- [推箱子](http://oj.ecustacm.cn/problem.php?id=1819)
+
+此题的主要思想就是横向看问题，先使用差分来求得每一行有多少个空格，然后计算相邻的h行空格数最多为多少，再拿 n*h-最多空格数即可
+且此题注意需要使用加快输入，否则会超时
+
+  ```python
+  import sys
+  input=sys.stdin.readline
+  n,h=map(int,input().split())
+  s=[0]*(n+1)
+  d=[0]*(n+1)
+  sum_=[0]*(n+1)
+  for _ in range(n):
+      l,r=map(int,input().split())
+      d[l]+=1
+      d[r+1]-=1
+  for i in range(1,n+1):
+      s[i]=s[i-1]+d[i-1]
+      sum_[i]=sum_[i-1]+s[i]
+  #print(s)
+  
+  #print(sum_)
+  max_=float('-inf')
+  for i in range(1,n+2-h-1):
+      max_=max(max_,sum_[i+h]-sum_[i])
+  print(n*h-max_)
+  ```
