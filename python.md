@@ -1119,3 +1119,31 @@ for i in range(1,len(idx)-1):
                     ans+=l+r-need+1
 print(ans)
 ```
+
+- [统计子矩阵](https://www.lanqiao.cn/problems/2109/learning/?page=1&first_category_id=1&problem_id=2109)
+
+```python
+import os
+import sys
+
+# 请在此输入您的代码
+n,m,k=map(int,input().split())
+a=[list(map(int,input().split())) for _ in range(n)]
+s=[[0]*(m+1) for _ in range(n+1)]
+for i in range(1,n+1):
+    for j in range(1,m+1):
+        s[i][j]=s[i-1][j]+a[i-1][j-1]
+
+res=0
+for i in range(1,n+1):
+    for j in range(i,n+1):
+        l=1
+        sum=0
+        for r in range(1,m+1):
+            sum+=s[j][r]-s[i-1][r]
+            while sum>k:
+                sum-=s[j][l]-s[i-1][l]
+                l+=1
+            res+=r-l+1
+print(res)
+```
