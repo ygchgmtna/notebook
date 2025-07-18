@@ -3,6 +3,8 @@
 
 本文汇总介绍 PyTorch 中常见的激活函数模块，包括其 **数学定义、适用场景、优缺点、代码示例与对比总结**。
 
+参考资料：![常见激活函数](https://blog.csdn.net/weixin_44115575/article/details/139835864?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522687b94156cb4f0f8ab9d32a8392aa359%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=687b94156cb4f0f8ab9d32a8392aa359&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-139835864-null-null.142^v102^pc_search_result_base6&utm_term=%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0&spm=1018.2226.3001.4187)
+
 ---
 
 ## ✅ 一、`nn.Sigmoid`
